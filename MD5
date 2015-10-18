@@ -1,6 +1,7 @@
-72b5213a1609db83f93f1a149075a3b4 *DESCRIPTION
+619f79b6f66d21aa13a7e4a2c405d73c *DESCRIPTION
 2b11af982e62e96e928587e70fe113fa *LICENSE
 c09dbc8643e4ae46fd575f158aed58e0 *NAMESPACE
+ed70b79b8ab1e32ddaa4c310e5eac4bb *NEWS
 37085c2c009cd22915222a7d3732aedf *R/auth-encrypt.R
 d1c37a131add702d15428fc72d757262 *R/data-encrypt.R
 331b58e1c063ba21ab40c1bce37a67d1 *R/diffie-hellman.R
@@ -11,7 +12,14 @@ c08413414b04c3c96a58dad243b10eb4 *R/signatures.R
 dc12dbbac4b2607dd62874c7e4c52b81 *R/simple-encrypt.R
 0e95361b916f99031d7a897ffae42433 *R/stream.R
 edeae08ca942bcc88410f50c3e7762a1 *R/utilities.R
+d25e2a1b3f2dacefbdcfa8c49d468f3b *build/vignette.rds
 5c4641e85fba4bf3a64cc693d48e0661 *configure
+2871536e6d978b9d711938972efac43e *inst/doc/crypto101.R
+0e535a1253a59e2c6470cc0993be68e8 *inst/doc/crypto101.html
+aeda94cc95cdf6e45b4217f9dd369a8a *inst/doc/crypto101.rmd
+f628f8dc426d6445935123044cd5f5d4 *inst/doc/intro.R
+9bb096226a010b6232cd5648ba6f644a *inst/doc/intro.html
+e1a493edfd9f95fad6bdc89c8c619dd6 *inst/doc/intro.rmd
 56e26de46c4eb6799ffdf630d84e10f5 *man/diffie.Rd
 84088f80a5868c502cc771888834065e *man/hash.Rd
 9db4e329b8da486b5f22bb2ff4ff2d4e *man/helpers.Rd
@@ -37,3 +45,5 @@ d7edc66c4affeb4f5199ab9cfe5aa325 *src/secret.c
 83795a30c73af6efedf4af4390dfdee9 *src/stream.c
 9ff6caa79257e3fc6c58d16f153a3f15 *src/xor.c
 8c13dae6450816cebaff84c6b6a66ecd *tools/winlibs.R
+aeda94cc95cdf6e45b4217f9dd369a8a *vignettes/crypto101.rmd
+e1a493edfd9f95fad6bdc89c8c619dd6 *vignettes/intro.rmd

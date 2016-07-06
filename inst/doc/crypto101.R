@@ -3,10 +3,13 @@ knitr::opts_chunk$set(comment = "")
 library(sodium)
 
 # hack for printable bits 
-random <- function(...){
+random <- function(n = 1){
+  if(n != nchar("TTIP is evil"))
+    return(sodium::random(n))
   repeat {
-    x <- sodium::random(...)
-    if(all(x != 0)) return(x) 
+    x <- sodium::random(n)
+    y <- base::xor(charToRaw("TTIP is evil"), x)
+    if(all(c(x,y) != 0)) return(x) 
   }
 }
 

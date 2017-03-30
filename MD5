@@ -1,7 +1,7 @@
-2c34cf8b73d9d533984fc4392f8d9e84 *DESCRIPTION
+5aef9b76604afe3217a1fa6350787277 *DESCRIPTION
 1ee0683cce6d3479250337954c075d63 *LICENSE
 ca47c62b5a48fc8b16d3e86eff523c5c *NAMESPACE
-497d17f2427fd0c1dd6560b9e53d66af *NEWS
+54b7e63f175d3f50df8dd21491e00f4a *NEWS
 37085c2c009cd22915222a7d3732aedf *R/auth-encrypt.R
 d1c37a131add702d15428fc72d757262 *R/data-encrypt.R
 331b58e1c063ba21ab40c1bce37a67d1 *R/diffie-hellman.R
@@ -14,7 +14,7 @@ dc12dbbac4b2607dd62874c7e4c52b81 *R/simple-encrypt.R
 edeae08ca942bcc88410f50c3e7762a1 *R/utilities.R
 c7584f9a03f4fde53f3394b1be113297 *build/vignette.rds
 6071edd604dbeb75308cfbedc7790398 *cleanup
-5305adce72d79025e8cd8b8962278c38 *configure
+249e8ee0b1c2c0ab8fe4829a9034dbf0 *configure
 7f49cdf1a21fa06deb003e5d96a10a90 *inst/doc/crypto101.R
 28c6dc1e8c052c626b6c97d7a5acb697 *inst/doc/crypto101.html
 2cad59741446d5aefccb92ebfe9eede2 *inst/doc/crypto101.rmd

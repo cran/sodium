@@ -5,6 +5,7 @@
 \alias{hash}
 \alias{hashing}
 \alias{scrypt}
+\alias{argon2}
 \alias{shorthash}
 \alias{sha512}
 \alias{sha256}
@@ -13,6 +14,8 @@
 hash(buf, key = NULL, size = 32)
 
 scrypt(buf, salt = raw(32), size = 32)
+
+argon2(buf, salt = raw(16), size = 32)
 
 shorthash(buf, key)
 
@@ -34,17 +37,21 @@ Functions to calculate cryptographic hash of a message, with optionally a key fo
 HMAC applications. For storing passwords, use \link{password_store} instead.
 }
 \details{
-The generic \code{hash} function is recommended most most applications. It uses
+The generic \code{hash} function is recommended for most applications. It uses
 dynamic length
-\href{https://download.libsodium.org/doc/hashing/generic_hashing.html}{BLAKE2b}
+\href{https://doc.libsodium.org/hashing/generic_hashing.html}{BLAKE2b}
 where output size can be any value between 16 bytes (128bit) and 64 bytes (512bit).
 
 The \link{scrypt} hash function is designed to be CPU and memory expensive to protect
 against brute force attacks. This algorithm is also used by the \link{password_store}
 function.
 
+The \link{argon2} hash function is also designed to be CPU and memory expensive to protect
+against brute force attacks. Argon2 is a password-hashing function that summarizes the
+state of the art in the design of memory-hard functions
+
 The \code{shorthash} function is a special 8 byte (64 bit) hash based on
-\href{https://download.libsodium.org/doc/hashing/short-input_hashing.html}{SipHash-2-4}.
+\href{https://doc.libsodium.org/hashing/short-input_hashing.html}{SipHash-2-4}.
 The output of this function is only 64 bits (8 bytes). It is useful for in e.g.
 Hash tables, but it should not be considered collision-resistant.
 
@@ -74,5 +81,5 @@ sha256(msg, key = key)
 sha512(msg, key = longkey)
 }
 \references{
-\url{https://download.libsodium.org/doc/hashing/generic_hashing.html}
+\url{https://doc.libsodium.org/hashing/generic_hashing.html}
 }

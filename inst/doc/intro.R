@@ -1,25 +1,25 @@
-## ---- echo = FALSE, message = FALSE--------------------------------------
+## ---- echo = FALSE, message = FALSE-------------------------------------------
 knitr::opts_chunk$set(comment = "")
 library(sodium)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 test <- hash(charToRaw("test 123"))
 str <- bin2hex(test)
 print(str)
 hex2bin(str)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 secret <- random(8)
 print(secret)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # Generate keys from passphrase
 passphrase <- charToRaw("This is super secret")
 hash(passphrase)
 hash(passphrase, size = 16)
 hash(passphrase, size = 64)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 key <- hash(charToRaw("This is a secret passphrase"))
 msg <- serialize(iris, NULL)
 
@@ -31,19 +31,19 @@ cipher <- data_encrypt(msg, key, nonce)
 orig <- data_decrypt(cipher, key, nonce)
 identical(iris, unserialize(orig))
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 key <- hash(charToRaw("This is a secret passphrase"))
 msg <- serialize(iris, NULL)
 mytag <- data_tag(msg, key)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 stopifnot(identical(mytag, data_tag(msg, key)))
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 key <- keygen()
 pub <- pubkey(key)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # Encrypt message with pubkey
 msg <- serialize(iris, NULL)
 ciphertext <- simple_encrypt(msg, pub)
@@ -52,7 +52,7 @@ ciphertext <- simple_encrypt(msg, pub)
 out <- simple_decrypt(ciphertext, key)
 stopifnot(identical(out, msg))
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # Generate signature keypair
 key <- sig_keygen()
 pubkey <- sig_pubkey(key)
@@ -65,7 +65,7 @@ print(sig)
 # Verify a signature from public key
 sig_verify(msg, sig, pubkey)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # Bob's keypair:
 bob_key <- keygen()
 bob_pubkey <- pubkey(bob_key)

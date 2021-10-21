@@ -1,4 +1,4 @@
-## ---- echo = FALSE, message = FALSE--------------------------------------
+## ---- echo = FALSE, message = FALSE-------------------------------------------
 knitr::opts_chunk$set(comment = "")
 library(sodium)
 
@@ -13,7 +13,7 @@ random <- function(n = 1){
   }
 }
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # XOR two (8bit) bytes 'x' and 'y'
 x <- as.raw(0x7a)
 y <- as.raw(0xe4)
@@ -23,7 +23,7 @@ dput(z)
 # Show the bits in each byte
 cbind(x = rawToBits(x), y = rawToBits(y), z = rawToBits(z))
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # Encrypt message using random one-time-pad
 msg <- charToRaw("TTIP is evil")
 one_time_pad <- random(length(msg))
@@ -35,16 +35,16 @@ rawToChar(ciphertext)
 # Decrypt with same pad
 rawToChar(base::xor(ciphertext, one_time_pad))
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 password <- "My secret passphrase"
 key <- hash(charToRaw(password))
 nonce <- random(8)
 chacha20(size = 20, key, nonce)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 salsa20(size = 20, key, nonce)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # Illustrative example.
 sha256_ctr <- function(size, key, nonce){
   n <- ceiling(size/32)
@@ -57,26 +57,26 @@ sha256_ctr <- function(size, key, nonce){
   return(output[1:size])
 }
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 password <- "My secret passphrase"
 key <- hash(charToRaw(password))
 nonce <- random(8)
 sha256_ctr(50, key, nonce)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # Encrypt 'message' using 'password'
 myfile <- file.path(R.home(), "COPYING")
 message <- readBin(myfile, raw(), file.info(myfile)$size)
 passwd <- charToRaw("My secret passphrase")
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # Basic secret key encryption
 key <- hash(passwd)
 nonce8 <- random(8)
 stream <- chacha20(length(message), key, nonce8)
 ciphertext <- base::xor(stream, message)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # Decrypt with the same key
 key <- hash(charToRaw("My secret passphrase"))
 stream <- chacha20(length(ciphertext), key, nonce8)
@@ -85,7 +85,7 @@ out <- base::xor(ciphertext, stream)
 # Print part of the message
 cat(substring(rawToChar(out), 1, 120))
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # Create keypair
 key <- keygen()
 pub <- pubkey(key)
@@ -98,7 +98,7 @@ ciphertext <- simple_encrypt(msg, pub)
 out <- simple_decrypt(ciphertext, key)
 identical(msg, out)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # Bob generates keypair
 bob_key <- keygen()
 bob_pubkey <- pubkey(bob_key)

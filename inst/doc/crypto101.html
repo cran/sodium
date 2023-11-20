@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2023-09-26" />
+<meta name="date" content="2023-11-20" />
 
 <title>How does cryptography work?</title>
 
@@ -350,7 +350,7 @@ display: none;
 
 
 <h1 class="title toc-ignore">How does cryptography work?</h1>
-<h4 class="date">2023-09-26</h4>
+<h4 class="date">2023-11-20</h4>
 
 </div>
 
@@ -402,7 +402,7 @@ ciphertext &lt;- base::xor(msg, one_time_pad)
 
 # It&#39;s really encrypted
 rawToChar(ciphertext)</code></pre>
-<pre><code>[1] &quot;\xa0\xde\b\xf0\xf4&#39;S;c\xaa\x9f&amp;&quot;</code></pre>
+<pre><code>[1] &quot;\x94\x8fu~\x86\001\xdd?M=݈&quot;</code></pre>
 <pre class="r"><code># Decrypt with same pad
 rawToChar(base::xor(ciphertext, one_time_pad))</code></pre>
 <pre><code>[1] &quot;TTIP is evil&quot;</code></pre>
@@ -425,7 +425,7 @@ data. Sodium implements a few popular stream ciphers:</p>
 key &lt;- hash(charToRaw(password))
 nonce &lt;- random(8)
 chacha20(size = 20, key, nonce)</code></pre>
-<pre><code> [1] b0 23 0a a6 98 f9 e6 04 60 67 a6 da 8b cd e5 4b f7 0e f3 64</code></pre>
+<pre><code> [1] 13 08 bc 95 87 c5 26 af 2c 0f cc cc 55 5a 0d 63 79 29 3f 30</code></pre>
 <p>Each stream requires a <code>key</code> and a <code>nonce</code>. The
 key forms the shared secret and should only be known to trusted parties.
 The <code>nonce</code> is not secret and is stored or sent along with
@@ -434,7 +434,7 @@ random stream unique to protect gainst re-use attacks. This way you can
 re-use a your key to encrypt multiple messages, as long as you never
 re-use the same nonce.</p>
 <pre class="r"><code>salsa20(size = 20, key, nonce)</code></pre>
-<pre><code> [1] e8 51 3c 4a d1 c0 7e 5c 1e 8b f8 15 83 e2 d2 41 e6 68 2c 9c</code></pre>
+<pre><code> [1] 1c 61 ad 92 57 c7 73 8b 35 28 e8 bd 32 ed a1 27 80 f9 0e f8</code></pre>
 <p>Over the years cryptographers have come up with many more variants.
 Many stream ciphers are based on a block cipher such as <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES</a>:
 a keyed permutation of fixed length amount of data. The block ciphers
@@ -463,8 +463,8 @@ secret key:</p>
 key &lt;- hash(charToRaw(password))
 nonce &lt;- random(8)
 sha256_ctr(50, key, nonce)</code></pre>
-<pre><code> [1] 34 fc 21 d9 e9 e7 89 76 e9 40 a8 34 29 44 6e 96 aa 05 8f 39 92 08 3c 1f a9
-[26] c6 9e 52 9d 28 f5 08 1c 14 f0 e5 68 b0 c7 ac 1c 0f 0f c8 ec 4a e4 1c 47 c3</code></pre>
+<pre><code> [1] 03 65 c8 83 96 ea 90 44 f4 9b f5 10 7c bb 8f 1d 37 e5 61 81 15 f6 5b a8 8a
+[26] 7f 1e 4a e5 24 30 9a 77 6a 4f 28 78 68 b5 e7 92 44 84 92 a7 28 99 02 d7 ec</code></pre>
 <p>In practice, you should never write your own ciphers. A lot of <a href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.58.1811&amp;rep=rep1&amp;type=pdf">research</a>
 goes into studying the properties of block ciphers under various modes
 of operation. In the remainder we just use the standard Sodium ciphers:

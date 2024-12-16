@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2024-10-03" />
+<meta name="date" content="2024-12-16" />
 
 <title>Sodium: A Modern and Easy-to-Use Crypto Library</title>
 
@@ -351,7 +351,7 @@ display: none;
 
 <h1 class="title toc-ignore">Sodium: A Modern and Easy-to-Use Crypto
 Library</h1>
-<h4 class="date">2024-10-03</h4>
+<h4 class="date">2024-12-16</h4>
 
 </div>
 
@@ -426,7 +426,7 @@ print(str)</code></pre>
 data, suitable for creating secret keys.</p>
 <pre class="r"><code>secret &lt;- random(8)
 print(secret)</code></pre>
-<pre><code>[1] a2 34 12 50 6f 91 4f b2</code></pre>
+<pre><code>[1] e2 dd 68 d0 ca 5f c6 bf</code></pre>
 <p>Implementation is platform specific, see the <a href="https://libsodium.gitbook.io/doc/generating_random_data">docs</a>
 for details.</p>
 </div>
@@ -533,9 +533,9 @@ pubkey &lt;- sig_pubkey(key)
 msg &lt;- serialize(iris, NULL)
 sig &lt;- sig_sign(msg, key)
 print(sig)</code></pre>
-<pre><code> [1] 7b c5 e2 82 5a 86 82 81 8b b4 53 b0 db 27 ef ce a4 1e 33 bf 8f 44 b8 8b 61
-[26] b0 c5 31 bf dc 70 a1 e1 04 75 c6 ae 4c ad d2 db 3f 71 2d 47 fd 5e 70 4e 0b
-[51] 13 3d 21 3d 18 02 22 af 8b 52 ff 52 9f 0d</code></pre>
+<pre><code> [1] 99 7a 7d 27 39 62 ac 7a 89 ef 76 4a ff de 27 07 d3 f5 4d e8 96 78 08 fc 9e
+[26] 83 6e f9 49 d0 ec c0 2e 3b 0e 5b 7a a3 d6 a2 fc f8 0a 4c a8 2f 9f c4 ad c1
+[51] 29 63 97 c6 2e d0 2b 16 2a 8e 3f 89 90 07</code></pre>
 <pre class="r"><code># Verify a signature from public key
 sig_verify(msg, sig, pubkey)</code></pre>
 <pre><code>[1] TRUE</code></pre>

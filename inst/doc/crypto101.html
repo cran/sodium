@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2024-10-03" />
+<meta name="date" content="2024-12-16" />
 
 <title>How does cryptography work?</title>
 
@@ -350,7 +350,7 @@ display: none;
 
 
 <h1 class="title toc-ignore">How does cryptography work?</h1>
-<h4 class="date">2024-10-03</h4>
+<h4 class="date">2024-12-16</h4>
 
 </div>
 
@@ -402,7 +402,7 @@ ciphertext &lt;- base::xor(msg, one_time_pad)
 
 # It&#39;s really encrypted
 rawToChar(ciphertext)</code></pre>
-<pre><code>[1] &quot;\n\xd0&lt;\xae\xec^&gt;AY$ޫ&quot;</code></pre>
+<pre><code>[1] &quot;.\xf8F\xfe\xa4 \xe8\xb6\035\xb5\xe3\x95&quot;</code></pre>
 <pre class="r"><code># Decrypt with same pad
 rawToChar(base::xor(ciphertext, one_time_pad))</code></pre>
 <pre><code>[1] &quot;TTIP is evil&quot;</code></pre>
@@ -425,7 +425,7 @@ data. Sodium implements a few popular stream ciphers:</p>
 key &lt;- hash(charToRaw(password))
 nonce &lt;- random(8)
 chacha20(size = 20, key, nonce)</code></pre>
-<pre><code> [1] db fa c7 3a 1e 16 67 de 69 d7 59 57 69 63 50 88 50 72 f2 71</code></pre>
+<pre><code> [1] ff 4b ac d7 db b6 10 bf 82 3f 1c 3e 0b 0e 0f 98 40 9c 87 4a</code></pre>
 <p>Each stream requires a <code>key</code> and a <code>nonce</code>. The
 key forms the shared secret and should only be known to trusted parties.
 The <code>nonce</code> is not secret and is stored or sent along with
@@ -434,7 +434,7 @@ random stream unique to protect gainst re-use attacks. This way you can
 re-use a your key to encrypt multiple messages, as long as you never
 re-use the same nonce.</p>
 <pre class="r"><code>salsa20(size = 20, key, nonce)</code></pre>
-<pre><code> [1] 40 52 df f2 e9 7c 9f ea 58 43 bd 63 50 60 16 91 62 a4 ef 8b</code></pre>
+<pre><code> [1] 70 ac 75 1a 61 e9 91 b4 2d 48 6c 2d f8 05 5f ae 6e 1a 29 4c</code></pre>
 <p>Over the years cryptographers have come up with many more variants.
 Many stream ciphers are based on a block cipher such as <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES</a>:
 a keyed permutation of fixed length amount of data. The block ciphers
@@ -463,8 +463,8 @@ secret key:</p>
 key &lt;- hash(charToRaw(password))
 nonce &lt;- random(8)
 sha256_ctr(50, key, nonce)</code></pre>
-<pre><code> [1] b2 1b 35 85 33 22 13 5c 1c 22 23 24 42 c2 55 89 31 1e 51 6e 12 96 4c 78 61
-[26] 04 51 e8 bf ae 39 7e 8f cc a1 0f ac 20 85 31 6e e2 d9 ab fa 3d 45 8a c7 8c</code></pre>
+<pre><code> [1] 24 88 a6 d9 50 e4 08 c2 03 c2 56 15 55 95 1a 57 53 a0 d6 dd 38 24 37 dc 79
+[26] 14 56 78 64 45 19 e8 1c d8 a1 40 4f d7 57 77 96 99 4f 4a 89 83 0e 4a 2f 45</code></pre>
 <p>In practice, you should never write your own ciphers. In the
 remainder we just use the standard Sodium ciphers: <a href="https://libsodium.gitbook.io/doc/advanced/stream_ciphers/chacha20"><code>chacha20</code></a>,
 <a href="https://libsodium.gitbook.io/doc/advanced/stream_ciphers/salsa20"><code>salsa20</code></a>
